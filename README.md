@@ -1,4 +1,4 @@
-Block Diagram
+## Block Diagram
 
 The ALU contains multiple functional units working together.
 
@@ -37,6 +37,10 @@ Flags Generated:
 ## Simulation Waveform
 
 The ALU was simulated using ModelSim.
+
+Example waveform:
+
+![Simulation](waveform.png)
 
 The waveform verifies arithmetic, logical and shift operations.
 
