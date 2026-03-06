@@ -38,9 +38,6 @@ Flags Generated:
 
 The ALU was simulated using ModelSim.
 
-Example waveform:
-
-![Simulation](waveform.png)
 
 The waveform verifies arithmetic, logical and shift operations.
 
