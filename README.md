@@ -38,7 +38,6 @@ Flags Generated:
 
 The ALU was simulated using ModelSim.
 
-
 The waveform verifies arithmetic, logical and shift operations.
 
 ## Tool Flow (ModelSim)
