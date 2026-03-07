@@ -1,63 +1,122 @@
-## Block Diagram
+# 32-bit Parameterized ALU (Verilog)
 
-The ALU contains multiple functional units working together.
+## Overview
+This project implements a **32-bit parameterized Arithmetic Logic Unit (ALU)** in Verilog.  
+The design supports arithmetic, logical, and shift operations selected through a **3-bit opcode**.  
+A **Carry Lookahead Adder (CLA)** is used for fast arithmetic computation and a **Barrel Shifter** enables efficient shift operations.  
+The design is verified using **ModelSim simulation** with a dedicated testbench.
 
-A,B Inputs
-↓
+---
+
+## Architecture
+
+<p align="center">
+  <img src="alu_architecture.png" width="600">
+</p>
+
+**Data Path**
+
+```
+Inputs (A, B)
+      │
+      ▼
 ALU Control Unit
-↓
-Arithmetic Unit (CLA Adder)
-↓
-Logic Unit (AND, OR, XOR)
-↓
-Barrel Shifter
-↓
-Result Output
+      │
+ ┌───────────────┬───────────────┬
+ │               │               │
+ ▼               ▼               ▼
+CLA Adder     Logic Unit     Barrel Shifter
+(ADD/SUB)   (AND/OR/XOR)     (SHIFT)
 
-Flags Generated:
+                 │
+                 ▼
+              Result
 
-* Zero
-* Carry
-* Negative
-* Overflow
+<p align="center">
+  <img src="alu_operation.png" width="600">
+</p>
+```
+
+**Status Flags**
+
+- **Zero (Z)** – Result equals zero  
+- **Carry (C)** – Carry generated during arithmetic operation  
+- **Negative (N)** – Result sign bit is high  
+- **Overflow (V)** – Arithmetic overflow detected
+
+---
 
 ## Supported Operations
 
-| Opcode | Operation     | Description                 |
-| ------ | ------------- | --------------------------- |
-| 000    | AND           | Bitwise AND between A and B |
-| 001    | OR            | Bitwise OR between A and B  |
-| 010    | ADD           | Addition using CLA Adder    |
-| 011    | SUB           | Subtraction using CLA Adder |
-| 100    | XOR           | Bitwise XOR                 |
-| 101    | SHIFT LEFT    | Logical left shift          |
-| 110    | SHIFT RIGHT   | Logical right shift         |
-| 111    | SET LESS THAN | Comparison operation        |
+| Opcode | Operation | Description |
+|------|------|------|
+| 000 | AND | Bitwise AND |
+| 001 | OR | Bitwise OR |
+| 010 | ADD | Addition using CLA |
+| 011 | SUB | Subtraction using CLA |
+| 100 | XOR | Bitwise XOR |
+| 101 | SHIFT LEFT | Logical left shift |
+| 110 | SHIFT RIGHT | Logical right shift |
+| 111 | SET LESS THAN | Comparison operation |
 
-## Simulation Waveform
+---
 
-The ALU was simulated using ModelSim.
+## Simulation
 
-Example waveform:
+<p align="center">
+  <img src="waveform.png" width="800">
+</p>
 
-![Simulation](waveform.png)
+The waveform confirms correct ALU behavior for arithmetic, logical, and shift operations.
 
-The waveform verifies arithmetic, logical and shift operations.
+---
 
-## Tool Flow (ModelSim)
+## Project Structure
 
-Compilation Order:
+```
+32-bit-Parameterized-ALU
+│
+├── parameterized_alu.v   # Top ALU module
+├── alu_control.v         # Opcode decoding logic
+├── cla_adder.v           # Carry Lookahead Adder
+├── barrel_shifter.v      # Shift operation unit
+├── alu_tb.v              # Testbench
+├── waveform.png          # Simulation result
+└── README.md
+```
 
+---
+
+## ModelSim Simulation Flow
+
+**1. Compile Design Files**
+
+```
 vlog cla_adder.v
 vlog barrel_shifter.v
 vlog alu_control.v
 vlog parameterized_alu.v
 vlog alu_tb.v
+```
 
-Simulation Commands:
+**2. Run Simulation**
 
+```
 vsim alu_tb
 add wave *
 run -all
+```
 
-The waveform confirms correct functionality of the ALU design.
+**Explanation**
+
+- `vlog` – Compiles Verilog modules into the simulation library  
+- `vsim alu_tb` – Launches simulation using the testbench  
+- `add wave *` – Displays all signals in the waveform window  
+- `run -all` – Executes the simulation until completion
+
+---
+
+## Author
+
+**Divya Sree**  
+M.Tech – VLSI Design
