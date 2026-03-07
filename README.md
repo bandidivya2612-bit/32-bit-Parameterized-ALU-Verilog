@@ -32,10 +32,12 @@ CLA Adder     Logic Unit     Barrel Shifter
                  ▼
               Result
 
-<p align="center">
-  <img src="alu_operation.png" width="600">
-</p>
+
 ```
+<p align="center">
+  <img src="images/alu_architecture.png" width="600">
+</p>
+
 
 **Status Flags**
 
