@@ -11,7 +11,7 @@ The design is verified using **ModelSim simulation** with a dedicated testbench.
 ## Architecture
 
 <p align="center">
-  <img src="alu_architecture.png" width="600">
+  <img src="architecture_alu.png" width="600">
 </p>
 
 **Data Path**
