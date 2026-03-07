@@ -34,8 +34,9 @@ CLA Adder     Logic Unit     Barrel Shifter
 
 
 ```
+##Datapath architecture
 <p align="center">
-  <img src="images/alu_architecture.png" width="600">
+  <img src="alu_operation.png" width="600">
 </p>
 
 
@@ -61,17 +62,7 @@ CLA Adder     Logic Unit     Barrel Shifter
 | 110 | SHIFT RIGHT | Logical right shift |
 | 111 | SET LESS THAN | Comparison operation |
 
----
 
-## Simulation
-
-<p align="center">
-  <img src="waveform.png" width="800">
-</p>
-
-The waveform confirms correct ALU behavior for arithmetic, logical, and shift operations.
-
----
 
 ## Project Structure
 
@@ -115,6 +106,18 @@ run -all
 - `vsim alu_tb` – Launches simulation using the testbench  
 - `add wave *` – Displays all signals in the waveform window  
 - `run -all` – Executes the simulation until completion
+
+---
+
+---
+
+## Simulation
+
+<p align="center">
+  <img src="waveform.png" width="800">
+</p>
+
+The waveform confirms correct ALU behavior for arithmetic, logical, and shift operations.
 
 ---
 
