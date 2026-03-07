@@ -49,7 +49,7 @@ CLA Adder     Logic Unit     Barrel Shifter
 
 ---
 
-## Supported Operations
+## Operations Involved
 
 | Opcode | Operation | Description |
 |------|------|------|
